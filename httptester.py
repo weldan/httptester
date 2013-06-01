@@ -84,8 +84,8 @@ run script
 def main():
 	parser = argparse.ArgumentParser(
 		prog="httptester.py",
-		description="=> A script to test http connect directly, \
-		or via http socket/proxy/tor <= Weldan Jamili <mweldan@gmail.com>"
+		description="A script to test http connection directly, \
+		or via http proxy or tor network Weldan Jamili <mweldan@gmail.com>"
 	)
 	parser.add_argument(
 		'--host', 
