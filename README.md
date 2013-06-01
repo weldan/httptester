@@ -3,7 +3,7 @@ httptester
 
 HTTP connection tester
 
-install required modules/program
+install required modules/program (ubuntu)
 =================================
 ```bash
 $ make
