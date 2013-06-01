@@ -95,7 +95,7 @@ def main():
 	)
 	parser.add_argument(
 		'--tor', 
-		help='Connect via tor proxy',  
+		help='Connect via tor network',  
 		metavar='1'
 	)
 	parser.add_argument(
