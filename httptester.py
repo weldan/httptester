@@ -7,6 +7,17 @@ Usage: python httptester.py -h # for usage instructions
 import argparse
 import requests
 import requesocks
+import sys
+
+"""
+Overwrite error message handling, show help
+"""
+class MyParser(argparse.ArgumentParser):
+	def error(self, message):
+		sys.stderr.write("Error: %s\n" % message)
+		sys.stderr.write("============================\n")
+		self.print_help()
+		sys.exit(2)		
 
 """
 target host objects
@@ -82,7 +93,7 @@ def runtest():
 run script
 """
 def main():
-	parser = argparse.ArgumentParser(
+	parser = MyParser(
 		prog="httptester.py",
 		description="A script to test http connection directly, \
 		or via http proxy or via tor network [ Weldan Jamili <mweldan@gmail.com> ]"
@@ -118,6 +129,8 @@ def main():
 	
 	if target.host is not None:
 		runtest()
+	else:
+		parser.print_help()
 		
 if __name__ == "__main__":
 	main()
