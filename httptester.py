@@ -100,7 +100,7 @@ def main():
 	)
 	parser.add_argument(
 		'--proxy', 
-		help='Connect via http proxy/socket',  
+		help='Connect via http proxy',  
 		metavar='IP:PORT'
 	)
 	parser.add_argument(
