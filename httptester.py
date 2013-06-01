@@ -96,7 +96,8 @@ def main():
 	parser = MyParser(
 		prog="httptester.py",
 		description="A script to test http connection directly, \
-		or via http proxy or via tor network [ Weldan Jamili <mweldan@gmail.com> ]"
+		or via http proxy or via tor network [ \
+		Weldan Jamili <mweldan@gmail.com> ]"
 	)
 	parser.add_argument(
 		'--host', 
