@@ -130,8 +130,6 @@ def main():
 	
 	if target.host is not None:
 		runtest()
-	else:
-		parser.print_help()
 		
 if __name__ == "__main__":
 	main()
