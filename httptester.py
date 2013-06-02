@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """
 HTTP Connection Tester
 Weldan Jamili, <mweldan@gmail.com>
