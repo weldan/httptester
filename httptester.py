@@ -70,7 +70,7 @@ def runtest():
 			}
 			request = session.get(target.host, auth=('user','pass'))
 			checkparam(request)
-		except requests.ConnectionError as error_message:
+		except requesocks.exceptions.ConnectionError as error_message:
 			print "============================"
 			print "HTTP connection failed with status message:"
 			print error_message
