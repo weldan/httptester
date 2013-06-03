@@ -66,8 +66,7 @@ def runtest():
 		try:		
 			session = requesocks.session()
 			session.proxies = {
-				"http": "socks5://127.0.0.1:9050",
-				"https": "socks5://127.0.0.1:9050"
+				"socks5": "socks5://127.0.0.1:9050"
 			}
 			request = session.get(target.host, auth=('user','pass'))
 			checkparam(request)
