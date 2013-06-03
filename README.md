@@ -31,6 +31,12 @@ connect via http proxy
 $ python httptester.py --host http://mweldan.com --proxy proxyhost:proxyport 
 ```
 
+connect via socks proxy
+=================
+```bash
+$ python httptester.py --host http://mweldan.com --socks proxyhost:proxyport 
+```
+
 bug report and else
 ====================
 create new ticket or email me at mweldan@gmail.com
