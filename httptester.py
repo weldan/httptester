@@ -52,7 +52,7 @@ def checkparam(request):
 run test
 """
 def runtest():
-	if target.tor is None and target.proxy is None:
+	if target.tor is None and target.proxy is None and target.socks is None:
 		try:
 			request = requests.get(target.host)
 			checkparam(request)
@@ -62,7 +62,7 @@ def runtest():
 			print error_message
 			print "============================"
 
-	elif target.tor is not None and target.proxy is None:
+	elif target.tor is not None and target.proxy is None and target.socks is None:
 		try:		
 			session = requesocks.session()
 			session.proxies = {
@@ -76,9 +76,10 @@ def runtest():
 			print error_message
 			print "============================"
 
-	elif target.tor is None and target.proxy is not None:
+	elif target.proxy is not None and target.tor is None and target.socks is None:
 		proxy = {
-			"http": "http://"+target.proxy
+			"http": "http://"+target.proxy,
+			"https": "https://"+target.proxy
 		}
 		try:
 			request = requests.get(target.host, proxies=proxy)
@@ -88,6 +89,21 @@ def runtest():
 			print "HTTP connection failed with status message:"
 			print error_message
 			print "============================"		 	
+
+	elif target.socks is not None and target.proxy is None and target.tor is None:
+		try:		
+			session = requesocks.session()
+			session.proxies = {
+				"socks4": "socks4://"+target.socks,
+				"socks5": "socks5://"+target.socks
+			}
+			request = session.get(target.host, auth=('user','pass'))
+			checkparam(request)
+		except requesocks.exceptions.ConnectionError as error_message:
+			print "============================"
+			print "HTTP connection failed with status message:"
+			print error_message
+			print "============================"
 	
 """
 run script
@@ -116,6 +132,11 @@ def main():
 		metavar='IP:PORT'
 	)
 	parser.add_argument(
+		'--socks', 
+		help='Connect via socks proxy',  
+		metavar='IP:PORT'
+	)	
+	parser.add_argument(
 		'--raw', 
 		help='Print raw response content',  
 		metavar='1'
@@ -124,7 +145,7 @@ def main():
 		'--status', 
 		help='Print response status code',  
 		metavar='1'
-	)					
+	)							
 	
 	arguments = parser.parse_args(namespace=target)
 	
