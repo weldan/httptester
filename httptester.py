@@ -149,8 +149,10 @@ def main():
 	
 	arguments = parser.parse_args(namespace=target)
 	
-	if target.host is not None:
+	if target.host is not None and target.host.find("//") != -1:
 		runtest()
+	else:
+		parser.print_help()
 		
 if __name__ == "__main__":
 	main()
